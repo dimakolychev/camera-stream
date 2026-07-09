@@ -1,0 +1,16 @@
+[Unit]
+Description=Web page for Raspberry Pi camera streams
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/opt/camera-stream/www
+Restart=always
+RestartSec=2
+ExecStart=/usr/local/bin/serve_camera_index.sh
+
+[Install]
+WantedBy=multi-user.target

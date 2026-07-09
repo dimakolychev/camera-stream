@@ -1,0 +1,15 @@
+[Unit]
+Description=USB camera 1 MJPEG HTTP stream
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=video
+Restart=always
+RestartSec=2
+ExecStart=/usr/local/bin/stream_camera_http.sh /dev/v4l/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.1:1.0-video-index0 8081 800x600 20
+
+[Install]
+WantedBy=multi-user.target
